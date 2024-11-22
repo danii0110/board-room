@@ -61,12 +61,19 @@ export default function RootLayout({ children }) {
               >
               로그인
               </button>
-              <div className="border-t border-gray-300"></div>
+              <div className="text-black top-60">
+                <a href="/signup">회원가입</a>
+              </div>
+              <div className="flex items-center w-full">
+                <div className="flex-grow border-t border-gray-300"></div>
+                <span className="px-4 text-gray-400">간편 로그인</span>
+                <div className="flex-grow border-t border-gray-300"></div>
+              </div>
             </form>
           </Modal>
 
-          {/* 구분선 */}
-          <div className="absolute top-20 left-[250px] w-[calc(100%-250px)] border-t border-gray-300"></div>
+          {/* 구분선
+          <div className="absolute top-20 left-[250px] w-[calc(100%-250px)] border-t border-gray-300"></div> */}
 
           {/* 왼쪽 사이드바 */}
           <aside className="sidebar w-[250px] fixed h-full bg-gray-100">
@@ -84,7 +91,7 @@ export default function RootLayout({ children }) {
           </aside>
 
           {/* 메인 콘텐츠 영역 */}
-          <main className="content ml-[250px]">{children}</main>
+          <main className="content ml-[300px] content mr-[200px]">{children}</main>
         </div>
       </body>
     </html>
