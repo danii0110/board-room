@@ -42,13 +42,13 @@ export default function Home() {
     return (
         <div className="container mx-auto p-4 pt-24">
             <table className="min-w-full border-collapse">
-                <thead className="bg-customOrange">
+                <thead className="bg-customOrange text-white">
                     <tr>
-                        <th className="px-4 py-2 border-b border-gray-300 rounded-tl-lg rounded-bl-lg text-center">No</th>
+                        <th className="px-4 py-2 border-b border-gray-300 rounded-tl-md rounded-bl-md text-center">No</th>
                         <th className="px-4 py-2 border-b border-gray-300 text-center">제목</th>
                         <th className="px-4 py-2 border-b border-gray-300 text-center">작성자</th>
                         <th className="px-4 py-2 border-b border-gray-300 text-center">작성일</th>
-                        <th className="px-4 py-2 border-b border-gray-300 rounded-tr-lg rounded-br-lg text-center">조회수</th>
+                        <th className="px-4 py-2 border-b border-gray-300 rounded-tr-md rounded-br-md text-center">조회수</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,41 +64,56 @@ export default function Home() {
                 </tbody>
             </table>
             
-            <div className="mt-6 flex justify-center items-center space-x-1">
-        {/* Prev 화살표 */}
-            <button
-                onClick={handlePrev}
-                disabled={currentPage === 1}
-                className="px-4 py-2 bg-white text-black rounded-md hover:bg-gray-400 disabled:bg-gray-300"
-            >
-                &lt;
-            </button>
+            <div className="mt-6 flex items-center">
+        {/* Pagination */}
+              <div className="flex-grow flex justify-center items-center space-x-1">
+          {/* Prev 화살표 */}
+                <button
+                  onClick={handlePrev}
+                   disabled={currentPage === 1}
+                  className="px-4 py-2 bg-white text-black rounded-md hover:bg-gray-400 disabled:bg-gray-300"
+                >
+                  &lt;
+                </button>
 
-        {/* 페이지 번호 */}
-        <ul className="flex space-x-1">
-          {pageNumbers.map((number) => (
-            <li key={number}>
-              <button
-                onClick={() => paginate(number)}
-                className={`px-3 py-1 text-sm bg-white text-black rounded-md hover:bg-gray-300 ${
-                  currentPage === number ? "bg-gray-400 text-white" : "bg-white border border-gray-300 text-black hover:bg-gray-600"
-                }`}
-              >
-                {number}
-              </button>
-            </li>
-          ))}
-        </ul>
+          {/* 페이지 번호 */}
+          <ul className="flex space-x-1">
+            {pageNumbers.map((number) => (
+              <li key={number}>
+                <button
+                  onClick={() => paginate(number)}
+                  className={`px-3 py-1 text-sm rounded-md ${
+                    currentPage === number
+                      ? "bg-gray-500 text-white"
+                      : "bg-white border border-gray-300 text-black hover:bg-gray-600"
+                  }`}
+                >
+                  {number}
+                </button>
+              </li>
+            ))}
+          </ul>
 
-        {/* Next 화살표 */}
-        <button
-          onClick={handleNext}
-          disabled={currentPage === pageNumbers.length}
-          className="px-4 py-2 bg-white text-black rounded-md hover:bg-gray-400 disabled:bg-gray-300"
-        >
-          &gt;
-        </button>
-            </div>
+          {/* Next 화살표 */}
+          <button
+            onClick={handleNext}
+            disabled={currentPage === pageNumbers.length}
+            className="px-4 py-2 bg-white text-black rounded-md hover:bg-gray-400 disabled:bg-gray-300"
+          >
+            &gt;
+          </button>
         </div>
+
+        {/* 글쓰기 버튼 */}
+        <div className="ml-auto">
+          <button
+            onClick={() => alert("글쓰기 페이지")}
+            className="px-4 py-2 bg-customOrange text-white rounded-md hover:bg-orange-400"
+          >
+          글쓰기
+          </button>
+        </div>
+      </div>
+    </div>
     );
 }
